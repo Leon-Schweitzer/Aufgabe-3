@@ -1,0 +1,173 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class GeldAutomat {
+	public final static int ZEHNERWERT = 10;
+	public final static int NEUNERWERT = 9;
+	public final static int ACHTERWERT = 8;
+	public final static int SIEBENERWERT = 7;
+	public final static int SECHSERWERT = 6;
+	public final static int FÜNFERWERT = 5;
+	public final static int VIERERWERT = 4;
+	public final static int DREIERWERT = 3;
+	public final static int ZWEIERWERT = 2;
+	public final static int EINSERWERT = 1;
+	/**
+	 * Main methode, wird immer Aufgerufen
+	 * 
+	 * @param args
+	 */
+	public static void main(String[] args) 
+	{
+		// Variablen initialisieren;
+	
+		int auszahlBetrag;
+		int ausgezahlt =  0;
+
+		int zehner = 0;
+		int neuner = 0;
+		int achter = 0;
+		int siebener = 0;
+		int sechser = 0;
+		int fünfer = 0;
+		int vierer = 0;
+		int dreier = 0;
+		int zweier = 0;
+		int einser = 0;
+		
+		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		System.out.println("++    Herzlich Willkommen bei Ihrem Flohmarkt  ++");
+		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		System.out.println();
+		System.out.println("Bitte geben Sie nun den auszuzahlenden Betrag in € ein:");
+		auszahlBetrag = In.readInt();
+		
+		// Kontostand verringern
+		System.out.println();
+		System.out.println("Sie haben " + auszahlBetrag + " € bezahlt.");
+		
+		// Anzahl der auszugebenden Flöhe berechnen
+		zehner = auszahlBetrag / ZEHNERWERT;
+		ausgezahlt += zehner * ZEHNERWERT;
+		neuner = (auszahlBetrag - ausgezahlt) / NEUNERWERT;
+		ausgezahlt += neuner * NEUNERWERT;
+		achter = (auszahlBetrag - ausgezahlt) / ACHTERWERT;
+		ausgezahlt += achter * ACHTERWERT;
+		siebener = (auszahlBetrag - ausgezahlt) / SIEBENERWERT;
+		ausgezahlt += siebener * SIEBENERWERT;
+		sechser = (auszahlBetrag - ausgezahlt) / SECHSERWERT;
+		ausgezahlt += sechser * SECHSERWERT;
+		fünfer = (auszahlBetrag - ausgezahlt) / FÜNFERWERT;
+		ausgezahlt += fünfer * FÜNFERWERT;
+		vierer = (auszahlBetrag - ausgezahlt) / VIERERWERT;
+		ausgezahlt += vierer * VIERERWERT;
+		dreier = (auszahlBetrag - ausgezahlt) / DREIERWERT;
+		ausgezahlt += dreier * DREIERWERT;
+		zweier = (auszahlBetrag - ausgezahlt) / ZWEIERWERT;
+		ausgezahlt += zweier * ZWEIERWERT;
+		einser = (auszahlBetrag - ausgezahlt) / EINSERWERT;
+		ausgezahlt += einser * EINSERWERT;
+		System.out.println();
+		System.out.println("Sie erhalten:");
+		System.out.println("\t" + zehner + " x 10 Flöhe");
+		System.out.println("\t" + neuner + " x 9 Flöhe");
+		System.out.println("\t" + achter + " x 8 Flöhe");
+		System.out.println("\t" + siebener + " x 7 Flöhe");
+		System.out.println("\t" + sechser + " x 6 Flöhe");
+		System.out.println("\t" + fünfer + " x 5 Flöhe");
+		System.out.println("\t" + vierer + " x 4 Flöhe");
+		System.out.println("\t" + dreier + " x 3 Flöhe");
+		System.out.println("\t" + zweier + " x 2 Flöhe");
+		System.out.println("\t" + einser + " x 1 Flöhe");
+		
+		// formatiert ausgeben
+		System.out.println();
+		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		System.out.println("++ Vielen Dank dass Sie unseren Flohmarkt besucht haben ++");
+		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+	}
+	
+	public class In{
+
+		static private BufferedReader inputSteam = new  BufferedReader(new InputStreamReader(System.in));
+
+		public static char readChar() {
+
+			String s;
+
+			if (inputSteam != null) { // Erzeugung überprüfen
+				try {
+						s = inputSteam.readLine();
+						// wenn ein String eingegeben wurde, der mindestens ein Zeichen besitzt ...
+						if (s != null && s.length() > 0) 
+							// ... dann gibt das erste Zeichen des Strings zurueck
+							return s.charAt(0); 
+						else
+							return '0';
+				} catch (IOException e) {
+						System.out.println(e);
+						return '0';
+				}
+		     } else {
+
+				System.out.println("Es konnte nichts eingelesen werden! Rückgabewert 0!");
+				return '0';
+			}
+	}
+	
+		public static int readInt() {
+
+			int wert;
+
+			if (inputSteam != null) { // Erzeugung überprüfen
+				try {
+					try {
+						wert = Integer.parseInt(inputSteam.readLine());
+					} catch(NumberFormatException e) {
+							System.out.println(e);
+							wert = 0;
+					}
+					// Eingabe-Streams wieder schließen
+
+					return wert;
+
+				 } catch (IOException e) {
+						System.out.println(e);
+						return 0;
+				 }
+		     } else {
+
+				System.out.println("Es konnte nichts eingelesen werden! Rückgabewert 0!");
+				return 0;
+			}
+		}
+
+		public static long readLong() {
+
+				long wert;
+
+				if (inputSteam != null) { // Erzeugung ßberprßfen
+					try {
+						try {
+							wert = Long.parseLong(inputSteam.readLine());
+						} catch(NumberFormatException e) {
+								System.out.println(e);
+								wert = 0;
+						}
+						// Eingabe-Streams wieder schließen
+
+						return wert;
+
+					 } catch (IOException e) {
+							System.out.println(e);
+							return 0;
+					 }
+			     } else {
+
+					System.out.println("Es konnte nichts eingelesen werden! Rückgabewert 0!");
+					return 0;
+				}
+		}
+	}
+	}
