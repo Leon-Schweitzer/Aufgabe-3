@@ -147,7 +147,7 @@ public class GeldAutomat {
 
 				long wert;
 
-				if (inputSteam != null) { // Erzeugung ßberprßfen
+				if (inputSteam != null) { // Erzeugung überprüfen
 					try {
 						try {
 							wert = Long.parseLong(inputSteam.readLine());
